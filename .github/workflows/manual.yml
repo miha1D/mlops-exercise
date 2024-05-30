@@ -1,14 +1,13 @@
-name: Manually triggered workflow
-on: 
+name: Manual Workflow
+
+on:
   workflow_dispatch:
-  
+
 jobs:
-  check-bats-version:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
+    - name: Check out code
+      uses: actions/checkout@v2
+    - name: Run bats version
+      run: bats -v
