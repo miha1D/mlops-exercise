@@ -1,18 +1,14 @@
 name: Manually triggered workflow
-
 on: 
   workflow_dispatch:
-
+  
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '16'
-      - name: Install bats
-        run: sudo apt-get update && sudo apt-get install -y bats
-      - name: Run bats version
-        run: bats -v
+          node-version: '14'
+      - run: npm install -g bats
+      - run: bats -v
